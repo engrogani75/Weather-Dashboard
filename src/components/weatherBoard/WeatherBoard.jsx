@@ -1,8 +1,11 @@
+import { useWeather } from "../../Hooks";
 import AddToFav from "./AddToFav";
 import WeatherDetails from "./WeatherDetails";
 import WeatherHeadLine from "./WeatherHeadLine";
 
 const WeatherBoard = () => {
+  const { weatherData, error, loading } = useWeather();
+  console.log(weatherData);
   return (
     <main>
       <section className="">
