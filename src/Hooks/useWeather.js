@@ -59,7 +59,7 @@ const useWeather = () => {
     wind: data?.wind?.speed,
     time: data?.dt,
     longitude: longitude,
-    latitute:  latitude
+    latitude:  latitude
         
       }
 
