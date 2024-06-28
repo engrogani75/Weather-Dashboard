@@ -1,19 +1,17 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import WeatherBoard from "./components/weatherBoard/WeatherBoard";
-import { FavProvider, WeatherProvider } from "./provider";
+import Page from "./Page";
+import { FavProvider, LocationProvider, WeatherProvider } from "./provider";
 
 function App() {
   return (
     <>
-      <WeatherProvider>
-        <FavProvider>
-          <div className="bg-body font-[Roboto] text-light bg-[url('../../assets/body-bg.png')] bg-no-repeat bg-cover h-screen grid place-items-center">
-            <Header></Header>
-            <WeatherBoard></WeatherBoard>
-          </div>
-        </FavProvider>
-      </WeatherProvider>
+      <LocationProvider>
+        <WeatherProvider>
+          <FavProvider>
+            <Page></Page>
+          </FavProvider>
+        </WeatherProvider>
+      </LocationProvider>
     </>
   );
 }

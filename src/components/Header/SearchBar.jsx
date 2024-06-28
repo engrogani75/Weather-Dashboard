@@ -1,6 +1,25 @@
+import { useContext, useState } from "react";
 import searchImg from "../../assets/search.svg";
+import { LocationContext } from "../../contex";
+import { getLocationByName } from "../../data/location-data";
+import { useDebounce } from "../../Hooks";
 
 const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const { setSelectLocation } = useContext(LocationContext);
+
+  const doSearch = useDebounce((term) => {
+    const fetchData = getLocationByName(term);
+    console.log(fetchData);
+    setSelectLocation({ ...fetchData });
+  }, 500);
+
+  function handleChange(e) {
+    const value = e.target.value;
+    setSearchTerm(value);
+    doSearch(value);
+  }
+
   return (
     <div>
       <form action="#">
@@ -9,6 +28,7 @@ const SearchBar = () => {
             className="bg-transparent  placeholder:text-white text-white w-full text-xs md:text-base outline-none border-none"
             type="search"
             placeholder="Search Location"
+            onChange={handleChange}
             required
           />
           <button type="submit">
